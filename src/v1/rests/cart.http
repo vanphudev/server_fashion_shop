@@ -1,0 +1,12 @@
+@hostname = localhost
+@port = 4040
+@object = cart
+@host = {{hostname}}:{{port}}
+@endpoint = api/v1/private/{{object}}
+@contentType = application/json
+
+GET http://{{host}}/{{endpoint}}/getCartById HTTP/1.1
+Content-Type: {{contentType}}
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWlfa2hvYW5faWQiOjE5LCJtYV9raGFjaF9oYW5nIjoxMSwidGVuX2toYWNoX2hhbmciOiJOZ3V54buFbiBQaMO6IiwiZGllbl90aG9haSI6IjAzNzc5ODUxMTIiLCJkaWFfY2hpIjpudWxsLCJpYXQiOjE3MzIxOTg5NzYsImV4cCI6MTczMzkyNjk3Nn0.-Q3JFfqYZAYfn7m3Sd5kG7a0kYjgtOh17-0CUoyJZE8
+client_id: 19
+

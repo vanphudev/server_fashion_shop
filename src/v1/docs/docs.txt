@@ -1,0 +1,62 @@
+1. CLI seeders
+   - Khởi chạy.
+      - npx sequelize-cli db:seed:all
+   - Thu hồi trước đó.
+      - npx sequelize-cli db:seed:undo:all
+
+2. CLI migrations
+   - Câu lệnh chạy lại migrations
+      - npx sequelize-cli db:migrate
+      - npx sequelize-cli db:migrate:undo:all
+   - Câu lệnh xóa và tạo lại db
+      - npx sequelize-cli db:drop
+      - npx sequelize-cli db:create
+
+4. CLI Khởi tạo migrations.
+   - npx sequelize-cli migration:generate --name <tên table>
+   - EX:    
+         - npx sequelize-cli migration:generate --name nhom_loai
+         - npx sequelize-cli migration:generate --name loai_san_pham
+         - npx sequelize-cli migration:generate --name nha_cung_cap
+         - npx sequelize-cli migration:generate --name thuong_hieu
+         - npx sequelize-cli migration:generate --name san_pham
+         - npx sequelize-cli migration:generate --name thong_tin_san_pham
+         - npx sequelize-cli migration:generate --name kich_thuoc
+         - npx sequelize-cli migration:generate --name mau_sac
+         - npx sequelize-cli migration:generate --name hinh_anh_san_pham
+         - npx sequelize-cli migration:generate --name thuoc_tinh_san_pham
+         - npx sequelize-cli migration:generate --name nha_cung_cap_san_pham
+         - npx sequelize-cli migration:generate --name tai_khoan
+         - npx sequelize-cli migration:generate --name oauth_provider
+         - npx sequelize-cli migration:generate --name khach_hang
+         - npx sequelize-cli migration:generate --name nhan_vien
+         - npx sequelize-cli migration:generate --name khuyen_mai
+         - npx sequelize-cli migration:generate --name phuong_thuc_thanh_toan
+         - npx sequelize-cli migration:generate --name hoa_don
+         - npx sequelize-cli migration:generate --name chi_tiet_hoa_don
+         - npx sequelize-cli migration:generate --name hoa_don_doi_tra
+         - npx sequelize-cli migration:generate --name chi_tiet_hoa_don_doi_tra
+         - npx sequelize-cli migration:generate --name nhap_hang
+         - npx sequelize-cli migration:generate --name chi_tiet_nhap_hang
+         - npx sequelize-cli migration:generate --name refresh_key_used
+         - npx sequelize-cli migration:generate --name nhom_quyen
+         - npx sequelize-cli migration:generate --name tai_khoan_nhom_quyen
+         - npx sequelize-cli migration:generate --name man_hinh
+         - npx sequelize-cli migration:generate --name phan_quyen
+         - npx sequelize-cli migration:generate --name gio_hang
+         - npx sequelize-cli migration:generate --name chi_tiet_gio_hang
+         - npx sequelize-cli migration:generate --name danh_gia_san_pham
+5. Lệnh tạo liên kết
+      hasMany(1-n), belongsTo(n-1), belongsToMany(n-n), hasOne(1-1) 
+      Employee.belongsToMany(models.Trip, {
+            through: models.TripEmployee,
+            foreignKey: "employee_id",
+            otherKey: "trip_id",
+            as: "employee_to_trip",
+         });
+      Trip.belongsToMany(models.Employee, {
+            through: models.TripEmployee,
+            foreignKey: "trip_id",
+            otherKey: "employee_id",
+            as: "trip_to_employee",
+         });

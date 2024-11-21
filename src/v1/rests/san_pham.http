@@ -1,0 +1,22 @@
+@hostname = localhost
+@port = 4040
+@object = san_pham
+@host = {{hostname}}:{{port}}
+@endpoint = api/v1/public/{{object}}
+@contentType = application/json
+
+### Welcome API Shop Fashion.
+GET http://{{host}}/{{endpoint}}/getall HTTP/1.1
+Content-Type: {{contentType}}
+
+### Welcome API Shop Fashion.
+GET http://{{host}}/{{endpoint}}/getbyid/quan-jean-skinny HTTP/1.1
+Content-Type: {{contentType}}
+
+###
+GET http://{{host}}/{{endpoint}}/tab?valueTab=new HTTP/1.1
+Content-Type: {{contentType}}
+
+###
+GET http://{{host}}/{{endpoint}}/lienquan?idLoai=2 HTTP/1.1
+Content-Type: {{contentType}}
