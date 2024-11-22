@@ -40,11 +40,9 @@ module.exports = (sequelize, DataTypes) => {
          modelName: "thong_tin_san_pham",
          tableName: "thong_tin_san_pham",
          underscored: true,
-         timestamps: true,
+         timestamps: false,
          paranoid: false,
          freezeTableName: true,
-         createdAt: "created_at",
-         updatedAt: "updated_at",
       }
    );
    return thong_tin_san_pham;

@@ -90,29 +90,31 @@ module.exports = (sequelize, DataTypes) => {
          },
          tong_gia_tri: {
             type: DataTypes.DECIMAL(10, 2),
-            allowNull: false,
             validate: {
                min: 0,
             },
          },
          tong_don_hang: {
             type: DataTypes.DECIMAL(10, 2),
-            allowNull: false,
             validate: {
                min: 0,
             },
          },
          hinh_thuc_ban: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
+            type: DataTypes.INTEGER,
             defaultValue: 0,
             validate: {
                isIn: [[0, 1]],
             },
          },
+         dia_chi_giao_hang: {
+            type: DataTypes.STRING(255),
+         },
+         phone_giao_hang: {
+            type: DataTypes.STRING(15),
+         },
          trang_thai_doi_tra: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             defaultValue: 0,
             validate: {
                isIn: [[0, 1, 2]],
@@ -124,11 +126,9 @@ module.exports = (sequelize, DataTypes) => {
          modelName: "hoa_don",
          tableName: "hoa_don",
          underscored: true,
-         timestamps: true,
+         timestamps: false,
          paranoid: false,
          freezeTableName: true,
-         createdAt: "created_at",
-         updatedAt: "updated_at",
       }
    );
    return hoa_don;

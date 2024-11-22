@@ -117,6 +117,16 @@ const getSanPhamById = async (req, res) => {
             {
                model: db.thuoc_tinh_san_pham,
                as: "san_pham_hasmany_thuoc_tinh_san_pham",
+               include: [
+                  {
+                     model: db.mau_sac,
+                     as: "thuoc_tinh_san_pham_belongsto_mau_sac",
+                  },
+                  {
+                     model: db.kich_thuoc,
+                     as: "thuoc_tinh_san_pham_belongsto_kich_thuoc",
+                  },
+               ],
             },
             {
                model: db.danh_gia_san_pham,
@@ -163,7 +173,19 @@ const getSanPhamById = async (req, res) => {
                san_pham_hasmany_danh_gia_san_pham: undefined,
                thuong_hieu: product.san_pham_belongsto_thuong_hieu,
                san_pham_belongsto_thuong_hieu: undefined,
-               thuoc_tinh_san_pham: product.san_pham_hasmany_thuoc_tinh_san_pham,
+               thuoc_tinh_san_pham: [
+                  ...product.san_pham_hasmany_thuoc_tinh_san_pham.map((tt) => {
+                     const mauSac = tt.thuoc_tinh_san_pham_belongsto_mau_sac;
+                     const kichThuoc = tt.thuoc_tinh_san_pham_belongsto_kich_thuoc;
+                     return {
+                        ...tt.toJSON(),
+                        thuoc_tinh_san_pham_belongsto_mau_sac: undefined,
+                        thuoc_tinh_san_pham_belongsto_kich_thuoc: undefined,
+                        mau_sac: mauSac.toJSON(),
+                        kich_thuoc: kichThuoc.toJSON(),
+                     };
+                  }),
+               ],
                san_pham_belongsto_loai_san_pham: undefined,
                san_pham_hasmany_thuoc_tinh_san_pham: undefined,
                gia_thap_nhat: giaThapNhat,

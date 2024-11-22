@@ -65,11 +65,9 @@ module.exports = (sequelize, DataTypes) => {
          modelName: "chi_tiet_hoa_don",
          tableName: "chi_tiet_hoa_don",
          underscored: true,
-         timestamps: true,
+         timestamps: false,
          paranoid: false,
          freezeTableName: true,
-         createdAt: "created_at",
-         updatedAt: "updated_at",
       }
    );
    return chi_tiet_hoa_don;
